@@ -1,6 +1,7 @@
 import { Title } from "@/app/components/Title/Title";
 import { Metadata } from "next";
 import { OTPPasswordForm } from "./OTPPasswordForm"
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Kiểm tra OTP",
@@ -15,7 +16,9 @@ export default function RegisterPage() {
           title="Kiểm tra OTP"
           className="text-center"
         />
-        <OTPPasswordForm/>
+        <Suspense fallback={<div>Loading...</div>}>
+          <OTPPasswordForm />
+        </Suspense>
       </div>
     </>
   );
