@@ -1,6 +1,6 @@
 const AdminAccount = require("../../model/admin-account.model")
 const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebadminToken');
+const jwt = require('jsonwebtoken');
 const OTPHelper = require("../../helper/OTPGen.helper");
 const ForgotPassword = require("../../model/forgot-password.model");
 const MailHelper = require("../../helper/mail.helper");
