@@ -4,7 +4,7 @@ const Role = require("../../model/role.model");
 
 module.exports.verifyToken = async (req, res) => {
   try {
-    const token = req.cookies.token;
+    const token = req.cookies.adminToken;
 
     if (!token) {
       res.json({
