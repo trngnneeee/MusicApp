@@ -1,6 +1,6 @@
 const AdminAccount = require("../../model/admin-account.model")
 const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebadminToken');
 const OTPHelper = require("../../helper/OTPGen.helper");
 const ForgotPassword = require("../../model/forgot-password.model");
 const MailHelper = require("../../helper/mail.helper");
@@ -62,7 +62,7 @@ module.exports.loginPost = async (req, res) => {
     return;
   }
 
-  const token = jwt.sign(
+  const adminToken = jwt.sign(
     {
       id: existAccount.id,
       email: existAccount.email
@@ -73,7 +73,7 @@ module.exports.loginPost = async (req, res) => {
     }
   );
 
-  res.cookie("token", token, {
+  res.cookie("adminToken", adminToken, {
     maxAge: req.body.rememberPassword == true ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production" ? true : false,
@@ -87,7 +87,7 @@ module.exports.loginPost = async (req, res) => {
 }
 
 module.exports.logoutGet = (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("adminToken");
   res.json({
     code: "success",
     message: "Đăng xuất thành công!"
@@ -170,7 +170,7 @@ module.exports.otpPasswordPost = async (req, res) => {
     email: existOTPAccount.email
   })
 
-  const token = jwt.sign(
+  const adminToken = jwt.sign(
     {
       id: existAccount.id,
       email: existAccount.email
@@ -181,7 +181,7 @@ module.exports.otpPasswordPost = async (req, res) => {
     }
   );
 
-  res.cookie("token", token, {
+  res.cookie("adminToken", adminToken, {
     maxAge: 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production" ? true : false,
