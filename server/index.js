@@ -13,6 +13,7 @@ mongoose.connect(process.env.DATABASE);
 app.use(cors({
   origin: 'https://music-app-sepia-chi.vercel.app',
   methods: ["GET", "POST", "PATCH", "DELETE"],
+  exposedHeaders: ["Set-Cookie"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
