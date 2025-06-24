@@ -49,6 +49,8 @@ export const LoginForm = () => {
         },
       ])
       .onSuccess((event) => {
+        event.preventDefault();
+
         const email = event.target.email.value;
         const password = event.target.password.value;
         const rememberPassword = event.target.rememberPassword.checked ? true : false;

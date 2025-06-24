@@ -29,6 +29,8 @@ export const OTPPasswordForm = () => {
         },
       ])
       .onSuccess((event) => {
+        event.preventDefault();
+
         const otp = event.target.otp.value;
         const email = searchParams.get("email");
         

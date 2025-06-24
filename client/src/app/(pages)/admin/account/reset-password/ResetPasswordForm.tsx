@@ -71,6 +71,8 @@ export const ResetPasswordForm = () => {
         }
       ])
       .onSuccess((event) => {
+        event.preventDefault();
+
         const password = event.target.password.value;
 
         const finalData = {

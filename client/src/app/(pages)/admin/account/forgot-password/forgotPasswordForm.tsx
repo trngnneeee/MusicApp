@@ -23,6 +23,8 @@ export const ForgotPasswordForm = () => {
         },
       ])
       .onSuccess((event) => {
+        event.preventDefault();
+
         const email = event.target.email.value;
 
         const finalData = {

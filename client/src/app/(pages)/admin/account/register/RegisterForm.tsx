@@ -72,6 +72,8 @@ export const RegisterForm = () => {
         errorsContainer: '#terms-error'
       })
       .onSuccess((event) => {
+        event.preventDefault();
+
         const fullName = event.target.fullName.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
