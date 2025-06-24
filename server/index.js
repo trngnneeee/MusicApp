@@ -11,7 +11,7 @@ const port = 8000
 mongoose.connect(process.env.DATABASE);
 
 app.use(cors({
-  origin: 'https://musicappserver-aj2k.onrender.com',
+  origin: 'https://music-app-sepia-chi.vercel.app/',
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
