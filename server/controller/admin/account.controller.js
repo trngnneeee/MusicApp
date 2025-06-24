@@ -77,7 +77,7 @@ module.exports.loginPost = async (req, res) => {
     maxAge: req.body.rememberPassword == true ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production" ? true : false,
-    sameSite: "lax"
+    sameSite: "none"
   });
 
   res.json({
@@ -185,7 +185,7 @@ module.exports.otpPasswordPost = async (req, res) => {
     maxAge: 24 * 60 * 60 * 1000,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production" ? true : false,
-    sameSite: "lax"
+    sameSite: "none"
   });
 
   await ForgotPassword.deleteOne({
